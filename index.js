@@ -1,9 +1,19 @@
-const Course = require("./Classes/ClassCourse");
+const Course = require("./Classes/Course");
+const Admin = require("./Classes/Users/Admin");
+const Teacher = require("./Classes/Users/Teacher");
+const Student = require("./Classes/Users/Student");
+const addCourse = require("./server/addCourse");
+const listCourses = require("./server/listCourses");
+const addStudent = require("./server/addStudent");
+const listStudents = require("./server/listStudents");
 
-let express = require("express")
-let server = express();
+const express = require('express');
+const app = express();    
+const path = require('path');
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
 
-
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 
@@ -21,10 +31,41 @@ console.log(glen)
 
 
 
-server.get("/", (req, res)=> {
-    res.send({berra, glen})
-})
 
-server.listen(8081, ()=> {
-    console.log("Server is running at port 8081")
-})
+
+
+
+
+io.on('connection', (socket) => {
+    console.log('a user connected');
+        
+    socket.on('addCourse',(msg)=> {
+
+        addCourse(socket);
+
+    });
+
+    socket.on('listCourses',(msg)=> {
+
+        listCourses(socket);
+
+    });
+    socket.on('addStudent',(msg)=> {
+
+        addStudent(socket);
+
+    });
+    socket.on('listStudents',(msg)=> {
+
+        listStudents(socket);
+
+    });
+});
+
+http.listen(8081, () => {
+  console.log('listening on *:8081');
+});
+
+
+
+
