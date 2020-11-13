@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <link rel="shortcut icon" href="#" />
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Westcoast Education</title>
         <script src="/socket.io/socket.io.js"></script>
-        <script src="./functions.js"></script>
+        <script src="./index.js"></script>
     </head>
     <body>
-        <button onclick="addCourse()">Add Course</button>
-        <button onclick="listCourses()">List Courses</button>
-        <button onclick="addStudent()">Add a student</button>
-        <button onclick="listStudents()">Show all students</button>
+        <h1>Welcome to Westcoast Education</h1>
+        <form action="http://localhost:8081/admin/">
+            <input type="submit" value="Goto Admin site" />
+        </form>
+        <form action="http://localhost:8081/teacher/">
+            <input type="submit" value="Goto Teachers site" />
+        </form>
+        <form action="http://localhost:8081/student/">
+            <input type="submit" value="Goto Student site" />
+        </form>
+        <form action="http://localhost:8081/courses/">
+            <input type="submit" value="Goto Courses site" />
+        </form>
     </body>
 </html>

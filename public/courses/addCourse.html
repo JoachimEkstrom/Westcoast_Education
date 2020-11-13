@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="shortcut icon" href="#" />
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Westcoast Education - Courses</title>
+        <script src="/socket.io/socket.io.js"></script>
+        <script type="application/javascript" src="../courses/courses.js"></script>
+    </head>
+    <body>
+        <h1>Add new Course</h1>
+        <form>
+            Course ID: <input id="id" type="text" name="id" value="" /><br />
+            Name: <input id="name" type="text" name="name" value="" /><br />
+            Hours long: <input id="hours" type="text" name="hours" value="" /><br />
+            Start Date: <input id="start" type="date" name="start" value="" /><br />
+            End Date: <input id="end" type="date" name="end" value="" /><br /><br />
+            <input type="button" onclick="addCourse()" value="Add course" />
+        </form>
+        <form action="http://localhost:8081/admin/">
+            <input type="submit" value="Back" />
+        </form>
+    </body>
+</html>

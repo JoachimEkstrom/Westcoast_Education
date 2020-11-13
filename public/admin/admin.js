@@ -26,3 +26,16 @@ function listStudents() {
 socket.on("listStudents", (msg) => {
     console.log(msg)
 })
+
+function addTeacher() {
+    socket.emit("addTeacher", "")
+}
+socket.on("addTeacher", (msg) => {
+    console.log(msg)
+})
+function listTeachers() {
+    socket.emit("listTeachers", "")
+}
+socket.on("listTeachers", (msg) => {
+    console.log(msg)
+})
