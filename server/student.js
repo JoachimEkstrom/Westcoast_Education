@@ -1,18 +1,28 @@
 const Student = require("../Classes/Users/Student");
 
-function addStudent(socket){
 
-    socket.emit("addStudent", (msg)=> {
+let students = []
+function addStudent(socket, message){
+
+    students.push(
+        new Student(
+            message.idNumber, 
+            message.firstName, 
+            message.lastName, 
+            message.address, 
+            message.phoneNumber
+        ))
+
+    console.log(students)
 
 
-    });
+    socket.emit("addStudent", message);
+
 }
-function listStudents(socket){
+function listStudents(socket, msg){
 
-    socket.emit("listStudents", (msg)=> {
-
-
-    });
+    console.log("Sending students")
+    socket.emit("listStudents", students);
 }
 
 

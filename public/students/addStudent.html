@@ -6,12 +6,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Westcoast Education - Student</title>
         <script src="/socket.io/socket.io.js"></script>
-        <script type="application/javascript" src="../students/student.js"></script>
+        <script type="application/javascript" src="../students/students.js"></script>
     </head>
     <body>
-        <form action="http://localhost:8081/">
-            <input type="submit" value="Go back to main page" />
+        <h1>Add new Student</h1>
+        <form>
+            Student ID: <input id="id" type="text" name="id" value="" /><br />
+            First name: <input id="firstname" type="text" name="firstname" value="" /><br />
+            Last name: <input id="lastname" type="text" name="lastname" value="" /><br />
+            Address: <input id="address" type="text" name="address" value="" /><br />
+            Phonenumber: <input id="phonenumber" type="text" name="phonenumber" value="" /><br /><br />
+            <input type="button" onclick="addStudent()" value="Add Student" />
         </form>
-        <button onclick="addAdmin()">List students</button>
+        <form action="http://localhost:8081/admin/">
+            <input type="submit" value="Back" />
+        </form>
     </body>
 </html>

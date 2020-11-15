@@ -7,8 +7,8 @@ function addCourse() {
     newCourse.id = document.getElementById("id").value;
     newCourse.name = document.getElementById("name").value;
     newCourse.hours = document.getElementById("hours").value;
-    newCourse.start = document.getElementById("start").value;
-    newCourse.end = document.getElementById("end").value;
+    newCourse.startDate = document.getElementById("startDate").value;
+    newCourse.endDate = document.getElementById("endDate").value;
 
     socket.emit("addCourse", newCourse)
 }
@@ -21,28 +21,33 @@ function listCourses() {
     socket.emit("listCourses", "")
 }
 
+let courses
+
 socket.on("listCourses", (msg) => {
     console.log(msg)
+    courses = msg
+    console.log(courses)
+
 
     let list = document.getElementById("list")
     list.textContent = "" // Deletes all child nodes
     
     if(msg){
-        for(i = 0; i< msg.length; i++){
+        for(let i = 0; i< msg.length; i++){
             let id = document.createElement("section")
             id.setAttribute("id", msg[i].id)
             
             let name = document.createElement("h2")
-            name.innerHTML = msg[i].name
+            name.innerHTML = "Course name: " + msg[i].name
             id.appendChild(name)
 
             let start = document.createElement("p")
-            start.innerHTML = msg[i].start
+            start.innerHTML = "Start Time: " + msg[i].startDate
             id.appendChild(start)
 
             let button = document.createElement("button")
             button.innerHTML = "More info"
-            button.setAttribute("onclick", `courseDetails(${msg[i].id})`) // Not working =/
+            button.setAttribute('onclick', `courseDetails(` + i +`)`) // Not working =/
             id.appendChild(button)
 
             list.appendChild(id)
@@ -53,26 +58,24 @@ socket.on("listCourses", (msg) => {
 function courseDetails(item){
     console.log(item)
 
-    let node = document.getElementById(item.id)
-    //node.textContent = ""
-    console.log(node)
+    let node = document.getElementById(courses[item].id)
+    node.textContent = ""
 
     let name = document.createElement("h2")
-    name.innerHTML = item.name
+    name.innerHTML = "Course name: " + courses[item].name
     node.appendChild(name)
 
     let start = document.createElement("p")
-    start.innerHTML = item.start
+    start.innerHTML = "Start time: " + courses[item].startDate
     node.appendChild(start)
 
     let end = document.createElement("p")
-    end.innerHTML = item.end
+    end.innerHTML = "Ending at: " + courses[item].endDate
     node.appendChild(end)
 
     let hours = document.createElement("p")
-    hours.innerHTML = item.hours
+    hours.innerHTML = "Hours total: " + courses[item].hours
     node.appendChild(hours)
 
-    list.appendChild(node)
 }
 

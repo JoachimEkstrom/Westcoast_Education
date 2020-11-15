@@ -1,5 +1,5 @@
 class Course {
-    constructor(id, name, hours){
+    constructor(id, name, hours, startDate, endDate){
 
         
         this.id = id;
@@ -11,8 +11,8 @@ class Course {
         this.classRooms = []
 
 
-        this.startDate = "";
-        this.endDate = "";
+        this.startDate = startDate;
+        this.endDate = endDate;
 
         this.isStarted = false;
         this.isCourseCompleted = false;

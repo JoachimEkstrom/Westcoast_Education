@@ -6,12 +6,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Westcoast Education - Student</title>
         <script src="/socket.io/socket.io.js"></script>
-        <script type="application/javascript" src="../students/student.js"></script>
+        <script type="application/javascript" src="../students/students.js"></script>
     </head>
     <body>
         <form action="http://localhost:8081/">
             <input type="submit" value="Go back to main page" />
         </form>
-        <button onclick="addAdmin()">List students</button>
+        <button onclick="listStudents()">List Students</button>
+
+        <div id="list"></div>
     </body>
 </html>
