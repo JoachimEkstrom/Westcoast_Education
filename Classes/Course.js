@@ -1,25 +1,27 @@
-const Course = function () {
+const Course = (function () {
 
-    this.teachers = []
-    this.students = []
-    this.classRooms = []
-
+    let teachers = []
+    let students = []
+    let classRooms = []
+    let courses = []
 
     function _addCourse(iid, iname, ihours, istartDate, iendDate){
 
-        
-        this.id = iid;
-        this.name = iname;
-        this.totalHours = ihours;
-
-        this.startDate = istartDate;
-        this.endDate = iendDate;
-
-        this.isStarted = false;
-        this.isCourseCompleted = false;
-        
+        courses.push({
+            id : iid,
+            name: iname,
+            hours: ihours,
+            startDate: istartDate,
+            endDate: iendDate,
+            isStarted: false,
+            isCourseCompleted: false,
+        })        
        
     };
+
+    function _courses(){
+        return courses
+    }
          
    
     function _addTeacher(t) {
@@ -61,6 +63,7 @@ const Course = function () {
 
     return {
         addCourse:          _addCourse,
+        courses:            _courses,
         addTeacher:         _addTeacher,
         removeTeacher:      _removeTeacher,
         addStudent:         _addStudent,
@@ -75,6 +78,6 @@ const Course = function () {
     }
 
 
-};
+})()
 
 module.exports = Course

@@ -1,34 +1,45 @@
-const Teacher = function () {
-    function _addTeacher(idNumber, firstName, lastName, address, phoneNumber){
-             
-        this.idNumber = idNumber;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.address = address;
-        this.phoneNumber = phoneNumber;
-        
-        this.subjects = [];
-        this.classes = [];
+const Teacher = (function () {
 
+    let teachers = []
+
+    function _addTeacher(idNumber, firstName, lastName, address, phoneNumber){
+        
+        teachers.push({
+
+        idNumber: idNumber,
+        firstName: firstName,
+        lastName:  lastName,
+        address:  address,
+        phoneNumber: phoneNumber,
+        subjects: [],
+        classes: [],
+        })
+        
+
+
+    }
+    function _returnTeachers() {
+        return teachers
     }
 
     function _addSubject(subject){
-        this.subjects.push(subject);
+        subjects.push(subject);
     }
     function _removeSubject(subject){
-        let found = this.subjects.findIndex(element => element === subject);
-        this.subjects.splice(found, 1);
+        let found = subjects.findIndex(element => element === subject);
+        subjects.splice(found, 1);
     }
     function _addClass(newClass){
-        this.classes.push(newClass);
+        classes.push(newClass);
     }
     function _removeClass(removeClass){
-        let found = this.classes.findIndex(element => element === removeClass);
-        this.classes.splice(found, 1);
+        let found = classes.findIndex(element => element === removeClass);
+        classes.splice(found, 1);
     }
 
     return {
         addTeacher: _addTeacher,
+        teachers: _returnTeachers,
         addSubject: _addSubject,
         removeSubject: _removeSubject,
         addClass: _addClass,
@@ -36,7 +47,7 @@ const Teacher = function () {
     }
 
 
-}
+})()
 
 
 

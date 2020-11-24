@@ -1,15 +1,24 @@
-const Admin = function () {
+const Admin = (function () {
+
+    let admins = []
 
     function _addAdmin(idNumber, firstName, lastName, address, phoneNumber, position){
         
-        this.idNumber = idNumber;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.address = address;
-        this.phoneNumber = phoneNumber;
-        
-        this.position = position;
+        admins.push({
+            idNumber: idNumber,
+            firstName: firstName,
+            lastName: lastName,
+            address: address,
+            phoneNumber: phoneNumber,
+            position: position,
+        })
+       
     }
+
+    function _returnAdmins(){
+        return admins
+    }
+
     function _changePosition(newPos){
         this.position = newPos;
 
@@ -17,9 +26,10 @@ const Admin = function () {
 
     return {
         addAdmin:       _addAdmin,
+        admins:         _returnAdmins,
         changePosition: _changePosition,
     }
 
-}
+})()
 
 module.exports = Admin;

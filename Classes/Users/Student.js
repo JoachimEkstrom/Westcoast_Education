@@ -1,19 +1,24 @@
-const Student = function (){
+const Student = (function (){
     
+    let students = []
+
     function _addStudent(idNumber, firstName, lastName, address, phoneNumber, schoolClass){
         
-                
-        this.idNumber = idNumber;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.address = address;
-        this.phoneNumber = phoneNumber;
-        
-        this.grades = [];
-        this.schoolClass = schoolClass;
+         students.push({
+            idNumber: idNumber,
+            firstName: firstName,
+            lastName: lastName,
+            address: address,
+            phoneNumber: phoneNumber,
+            grades: [],
+            schoolClass: schoolClass,
+         })       
+
          
     }
-
+    function _returnStudents() {
+        return students
+    }
     function _addGrade(subject, grade){
         this.subjects.push({subject: subject, grade: grade});
     }
@@ -27,11 +32,12 @@ const Student = function (){
 
     return {
         addStudent :    _addStudent,
+        students:       _returnStudents,
         addGrade:       _addGrade,
         removeGrade:    _removeGrade,
         changeClass:    _changeClass,
 
     }
-}
+})()
 
 module.exports = Student;

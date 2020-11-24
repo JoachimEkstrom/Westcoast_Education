@@ -74,7 +74,7 @@ function courseDetails(item){
     node.appendChild(end)
 
     let hours = document.createElement("p")
-    hours.innerHTML = "Hours total: " + courses[item].totalHours
+    hours.innerHTML = "Hours total: " + courses[item].hours
     node.appendChild(hours)
 
 }
