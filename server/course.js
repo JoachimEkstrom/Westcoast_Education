@@ -4,11 +4,11 @@ let courses = []
 
 function addCourse(socket, m){
 
-    courses.push(new Course(m.id, m.name, m.hours, m.startDate, m.endDate))
-    console.log(courses)
-
+    courses.push(Course());
+    courses[courses.length -1].addCourse(m.id, m.name, m.hours, m.startDate, m.endDate);
     socket.emit("addCourse", m);
 }
+
 function listCourse(socket, msg){
 
     console.log("Sending Courses")

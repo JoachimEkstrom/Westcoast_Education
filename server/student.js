@@ -2,21 +2,13 @@ const Student = require("../Classes/Users/Student");
 
 
 let students = []
-function addStudent(socket, message){
+function addStudent(socket, m){
 
-    students.push(
-        new Student(
-            message.idNumber, 
-            message.firstName, 
-            message.lastName, 
-            message.address, 
-            message.phoneNumber
-        ))
-
-    console.log(students)
+    students.push(Student());
+    students[students.length -1].addStudent(m.idNumber, m.firstName, m.lastName, m.address, m.phoneNumber)
 
 
-    socket.emit("addStudent", message);
+    socket.emit("addStudent", m);
 
 }
 function listStudents(socket, msg){

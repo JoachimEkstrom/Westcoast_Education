@@ -1,64 +1,80 @@
-class Course {
-    constructor(id, name, hours, startDate, endDate){
+const Course = function () {
+
+    this.teachers = []
+    this.students = []
+    this.classRooms = []
+
+
+    function _addCourse(iid, iname, ihours, istartDate, iendDate){
 
         
-        this.id = id;
-        this.name = name;
-        this.totalHours = hours;
+        this.id = iid;
+        this.name = iname;
+        this.totalHours = ihours;
 
-        this.teachers = []
-        this.students = []
-        this.classRooms = []
-
-
-        this.startDate = startDate;
-        this.endDate = endDate;
+        this.startDate = istartDate;
+        this.endDate = iendDate;
 
         this.isStarted = false;
         this.isCourseCompleted = false;
         
-        
+       
+    };
          
-    }
-    addTeacher(t) {
-        this.teachers.push(t)
-    }
-    removeTeacher(t){
-        let found = this.teachers.findIndex(element => element === t)
-        this.teachers.splice(found, 1)
-    }
-    addStudent(s){
-        this.students.push(s)
-    }
-    removeStudent(s){
-        let found = this.students.findIndex(element => element === s)
-        this.students.splice(found, 1)
+   
+    function _addTeacher(t) {
+        teachers.push(t)
+    };
+    function _removeTeacher(t){
+        let found = teachers.findIndex(element => element === t)
+        teachers.splice(found, 1)
+    };
+    function _addStudent(s){
+        students.push(s)
+    };
+    function _removeStudent(s){
+        let found = students.findIndex(element => element === s)
+        students.splice(found, 1)
+    };
+
+    function _addClassRoom(r){
+        classRooms.push(r)
+    };
+    function _removeClassRoom(r){
+        let found = classRooms.findIndex(element => element === r)
+        classRooms.splice(found, 1)
+    };
+
+    function _startCourse(){
+        isStarted = true;
+        console.log(isStarted)
+    };
+    function _endCourse(){
+        isCourseCompleted = true;
+    };
+    function _setStartDate(date){
+        startDate = date;
+    };
+    function _setEndDate(date){
+        endDate = date;
+    }; 
+
+    return {
+        addCourse:          _addCourse,
+        addTeacher:         _addTeacher,
+        removeTeacher:      _removeTeacher,
+        addStudent:         _addStudent,
+        removeStudent:      _removeStudent,
+        addClassRoom:       _addClassRoom,
+        removeClassRoom:    _removeClassRoom,
+        startCourse:        _startCourse,
+        endCourse:          _endCourse,
+        setStartDate:       _setStartDate,
+        setEndDate:         _setEndDate,
+
     }
 
-    addClassRoom(r){
-        this.classRooms.push(r)
-    }
-    removeClassRoom(r){
-        let found = this.classRooms.findIndex(element => element === r)
-        this.classRooms.splice(found, 1)
-    }
 
-    startCourse(){
-        this.isStarted = true;
-    }
-    endCourse(){
-        this.isCourseCompleted = true;
-    }
-    setStartDate(date){
-        this.startDate = date;
-    }
-    setEndDate(date){
-        this.endDate = date;
-    }
-
-}
-
-//let newCourse = new Course("DP-M", "Designprinciper och Mönster", 10) 
-
+};
 
 module.exports = Course

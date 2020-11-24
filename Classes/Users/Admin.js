@@ -1,25 +1,25 @@
-const User = require("./User.js");
+const Admin = function () {
 
-class Admin extends User {
-    constructor(idNumber, firstName, lastName, address, phoneNumber, position){
-        super(idNumber, firstName, lastName, address, phoneNumber);
+    function _addAdmin(idNumber, firstName, lastName, address, phoneNumber, position){
+        
+        this.idNumber = idNumber;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
         
         this.position = position;
-
-        
-        
-         
     }
-    changePosition(newPos){
+    function _changePosition(newPos){
         this.position = newPos;
-        return this;
+
     }
 
-
+    return {
+        addAdmin:       _addAdmin,
+        changePosition: _changePosition,
+    }
 
 }
-
-
-
 
 module.exports = Admin;

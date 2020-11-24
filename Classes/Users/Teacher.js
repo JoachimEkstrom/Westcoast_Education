@@ -1,37 +1,39 @@
-const User = require("./User.js");
-
-class Teacher extends User {
-    constructor(idNumber, firstName, lastName, address, phoneNumber){
-        super(idNumber, firstName, lastName, address, phoneNumber);
+const Teacher = function () {
+    function _addTeacher(idNumber, firstName, lastName, address, phoneNumber){
+             
+        this.idNumber = idNumber;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
         
         this.subjects = [];
         this.classes = [];
 
-
-        
-        
-         
     }
 
-    addSubject(subject){
+    function _addSubject(subject){
         this.subjects.push(subject);
-        return this;
     }
-    removeSubject(subject){
+    function _removeSubject(subject){
         let found = this.subjects.findIndex(element => element === subject);
         this.subjects.splice(found, 1);
-        return this;
     }
-    addClass(newClass){
+    function _addClass(newClass){
         this.classes.push(newClass);
-        return this;
     }
-    removeClass(removeClass){
+    function _removeClass(removeClass){
         let found = this.classes.findIndex(element => element === removeClass);
         this.classes.splice(found, 1);
-        return this;
     }
 
+    return {
+        addTeacher: _addTeacher,
+        addSubject: _addSubject,
+        removeSubject: _removeSubject,
+        addClass: _addClass,
+        removeClass: _removeClass,
+    }
 
 
 }
